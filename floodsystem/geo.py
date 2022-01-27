@@ -23,3 +23,17 @@ def stations_by_distance(stations,p):
         list.append((station.name,D))
     
     return sorted_by_key(list,1)
+
+def rivers_with_station(stations):
+    """Returns a container of river names with stations, without any duplicating entries"""
+
+    # Initialise a list
+    list_of_rivers = []
+
+    # First create a list of all the rivers associated with each station 
+    for station in stations:
+        list_of_rivers.append(station.river)
+    
+    set_of_rivers = set(list_of_rivers)
+
+    return set_of_rivers 
