@@ -37,3 +37,24 @@ def rivers_with_station(stations):
     set_of_rivers = set(list_of_rivers)
 
     return set_of_rivers 
+
+def stations_by_river(stations):
+    """Returns a dictionary that maps river names to the list of stations on a river"""
+    
+    set_of_rivers = rivers_with_station(stations)
+
+    # Initialise a dictionary 
+    stations_by_river = {} 
+
+    list_of_stations_along_each_river = [] 
+
+    for riv in set_of_rivers:
+        for station in stations: 
+            if station.river == riv:
+                list_of_stations_along_each_river.append(station.name)
+        
+        stations_by_river[riv] = list_of_stations_along_each_river
+        list_of_stations_along_each_river = []
+        
+        
+    return stations_by_river 
