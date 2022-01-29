@@ -12,6 +12,3 @@ stations = build_station_list()
 x = stations_within_radius(stations, (52.2053,0.1218), 10)
 
 print(sorted(x))
-
-
-

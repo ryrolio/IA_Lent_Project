@@ -38,3 +38,10 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+
+    def typical_range_consistent(self): 
+        """Returns True/False based on the availability of consistent data"""
+        if self.typical_range = "True":
+            return self.typical_range
+        else self.typical_range = "False" or self.typical_range = []
+            return self.typical_range 
