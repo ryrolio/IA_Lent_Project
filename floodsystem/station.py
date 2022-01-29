@@ -39,9 +39,19 @@ class MonitoringStation:
         d += "   typical range: {}".format(self.typical_range)
         return d
 
+    #### TASK 1F #### 
+
     def typical_range_consistent(self): 
-        """Returns True/False based on the availability of consistent data"""
-        if self.typical_range = "True":
-            return self.typical_range
-        else self.typical_range = "False" or self.typical_range = []
-            return self.typical_range 
+        """This method reports whether or not the Monitoring Station has a results for the high & low range data"""
+        return type(self.typical_range) == tuple 
+
+def inconsistent_typical_range_stations(stations):
+    """Given a list of stations, this returns a list of stations that have inconsistent data""" 
+
+    inconsistent_station_list = [] 
+
+    for station in stations: 
+        if station.typical_range_consistent() == False:
+            inconsistent_station_list.append(station)
+    
+    return inconsistent_station_list 
