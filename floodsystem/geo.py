@@ -87,5 +87,20 @@ def stations_by_river(stations):
         stations_by_river[riv] = list_of_stations_along_each_river
         list_of_stations_along_each_river = []
         
-        
     return stations_by_river 
+
+def rivers_by_station_number(stations, N):
+    """Gives a list of N rivers with the greatest number of monitoring stations"""
+    list = []
+    dictionary = stations_by_river(stations)
+    for river in dictionary:
+        n = len(dictionary[river])
+        tup = (river, n)
+        list.append(tup)
+    sorted_list = sorted_by_key(list,1,1)
+    N_list = sorted_by_key(list,1,1)[:N]
+    x = 0
+    while sorted_list[N+x] == sorted_list[N]:
+        N_list.append(sorted_list[N+x])
+        x +=1
+    return N_list
