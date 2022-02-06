@@ -1,12 +1,16 @@
 ### This file is the Unit Test for the geo.py module 
 
-from typing import List, Tuple
+import string
+from tokenize import String
+from typing import List, Set, Tuple
 from floodsystem.geo import *
 from floodsystem.stationdata import build_station_list 
 import random 
 
 #### TASK 1B: Check that the outputs are of the correct type and value 
 def test_stations_by_distance(): 
+    """Check that the outputs of stations_by_distance are of the correct type and value"""
+
     stations = build_station_list()
     p = (52.2053,0.1218) 
     X = stations_by_distance(stations,p)
@@ -22,11 +26,12 @@ def test_stations_by_distance():
             break 
 
     # Check that the list orders each station by distance 
-    for n in range(1,len(X)):
+    for n in range(0,len(X)-1):
         assert X[n+1][1] >= X[n][1] 
 
 ### TASK 1C: Check that the outputs are of the correct type and are ordered properly
 def test_stations_within_radius(): 
+    """Check that the outputs of stations_within_radius are of the correct type"""
     stations = build_station_list()
     p = (52.2053,0.1218) 
 
@@ -41,5 +46,24 @@ def test_stations_within_radius():
     # Check the type of the output
     assert type(X) == list 
     # Check that the list is in alphabetical order 
-    for n in range(1,len(X)):
+    for n in range(0,len(X)-1):
         assert X[n+1] >= X[n]
+
+### TASK 1D: 
+def test_rivers_with_station(): 
+    """Check that the outputs of rivers_with_station are of the correct type"""
+    stations = build_station_list() 
+    # Obtain output 
+    X = rivers_with_station(stations)
+
+    # Check that the output is of the correct type 
+    assert type(X) == Set 
+    # Check that every entry in the set is of the correct type 
+    for n in range(0,len(X)-1):
+        assert type(X[n]) == String 
+
+    # The output should not contain duplicate entries 
+    for entry in X:
+        if X.count(entry) > 1:           # Frequency Counter 
+            raise ValueError("There are duplicate entries in the output")
+        
