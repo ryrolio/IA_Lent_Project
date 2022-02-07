@@ -69,6 +69,21 @@ def rivers_with_station(stations):
 
     return set_of_rivers 
 
+def stations_within_radius(stations, centre, r):
+    """Returns a list of all stations within a radius of a specified geographic coordinate."""
+    # Initialise a List 
+    list = []
+    #build list with stations and their respective distances to centre
+    stations_distance_list = stations_by_distance(stations,centre)
+    for tup in stations_distance_list: 
+        # Use distance from station to a given coordinate given by function stations_by_distance 
+        distance = tup[1]
+        if distance < r:
+            #Add to list if distance is less than r
+            list.append(tup[0])
+    return list
+
+
 def stations_by_river(stations):
     """Returns a dictionary that maps river names to the list of stations on a river"""
     
@@ -89,8 +104,11 @@ def stations_by_river(stations):
         
     return stations_by_river 
 
+<<<<<<< HEAD
+=======
 #### TASK 1E ####
 
+>>>>>>> e0a0b7c97099a58f002452c9498379dfd6a38d3e
 def rivers_by_station_number(stations, N):
     """Gives a list of N rivers with the greatest number of monitoring stations"""
     list = []
