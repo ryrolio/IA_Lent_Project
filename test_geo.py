@@ -49,7 +49,7 @@ def test_stations_within_radius():
     for n in range(0,len(X)-1):
         assert X[n+1] >= X[n]
 
-### TASK 1D: 
+### TASK 1D: Check that the outputs are of the correct type and are ordered properly 
 def test_rivers_with_station(): 
     """Check that the outputs of rivers_with_station are of the correct type"""
     stations = build_station_list() 
