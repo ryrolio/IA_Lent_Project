@@ -45,6 +45,15 @@ class MonitoringStation:
         """This method reports whether or not the Monitoring Station has a results for the high & low range data"""
         return type(self.typical_range) == tuple 
 
+    #### TASK 2B #### 
+    def relative_water_level(self):
+        """This method reports the latest water level as a fraction of the typical range; if not available, reports none"""
+
+        if self.latest_level is None or self.typical_range is None:
+            return None 
+        else: 
+            return (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0])
+
 def inconsistent_typical_range_stations(stations):
     """Given a list of stations, this returns a list of stations that have inconsistent data""" 
 
