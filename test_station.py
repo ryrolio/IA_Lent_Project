@@ -26,7 +26,7 @@ def test_create_monitoring_station():
     assert s.river == river
     assert s.town == town
 
-    ###1F
+### Task 1F: Check that the outputs are of the correct type and are ordered properly 
 def test_inconsistent_typical_range_consistent():
     """Check that the outputs of rivers_by_station_number are of the correct type"""
     #create a list with one consistent station and one inconsistent station
