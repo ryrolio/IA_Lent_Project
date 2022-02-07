@@ -66,4 +66,20 @@ def test_rivers_with_station():
     for entry in X:
         if X.count(entry) > 1:           # Frequency Counter 
             raise ValueError("There are duplicate entries in the output")
+    
+    # Check that River Cam is inside the list 
+    assert ("River Cam", "Cambridge") in X 
+
+def test_stations_by_river(): 
+    """Check that the outputs of stations_by_river are of the correct type and value"""
+     stations = build_station_list() 
+    # Obtain output 
+    X = stations_by_river(stations)
+
+    # Check the output type
+    assert type(X) == dict 
+
+    # We know that the River Cam is in Cambridge 
+    assert "Cambridge" in X["River Cam"]
+
         
