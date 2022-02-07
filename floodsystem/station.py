@@ -42,16 +42,21 @@ class MonitoringStation:
     #### TASK 1F #### 
 
     def typical_range_consistent(self): 
-        """This method reports whether or not the Monitoring Station has a results for the high & low range data"""
-        return type(self.typical_range) == tuple 
+        """This method reports whether or not the Monitoring Station has a result for the high & low range data"""
+        if self.typical_range == None:                          # No typical range, report False
+            return False 
+        elif self.typical_range[1] > self.typical_range[0]:     # We must have an upper and lower bound
+            return True 
+        else: 
+            return False 
 
     #### TASK 2B #### 
     def relative_water_level(self):
         """This method reports the latest water level as a fraction of the typical range; if not available, reports none"""
 
-        if self.latest_level is None or self.typical_range is None:
-            return None 
-        else: 
+        if self.latest_level == None or self.typical_range_consistent() == False: 
+            return None
+        else:
             return (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0])
 
 def inconsistent_typical_range_stations(stations):
