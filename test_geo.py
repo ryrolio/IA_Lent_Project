@@ -66,10 +66,6 @@ def test_rivers_with_station():
     for entry in X:
         if X.count(entry) > 1:           # Frequency Counter 
             raise ValueError("There are duplicate entries in the output")
-<<<<<<< HEAD
-    
-    # Check that River Cam is inside the list 
-    assert ("River Cam", "Cambridge") in X 
 
 def test_stations_by_river(): 
     """Check that the outputs of stations_by_river are of the correct type and value"""
@@ -82,10 +78,8 @@ def test_stations_by_river():
 
     # We know that the River Cam is in Cambridge 
     assert "Cambridge" in X["River Cam"]
-
-        
-=======
             
+### TASK 1E: Check that the outputs are of the correct type and are ordered properly
 def test_rivers_by_station_number():
      """Check that the outputs of rivers_by_station_number are of the correct type"""
     stations = build_station_list() 
@@ -98,4 +92,3 @@ def test_rivers_by_station_number():
         assert X[n+1][1] >= X[n][1]
     # Check that the list is of length N or greater
     assert len(X) >= N
->>>>>>> add015a68b2a29f353dfa636f1b8f01dd20334e7
