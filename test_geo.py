@@ -58,6 +58,7 @@ def test_rivers_with_station():
 
     # Check that the output is of the correct type 
     assert type(X) == Set 
+
     # Check that every entry in the set is of the correct type 
     for n in range(0,len(X)-1):
         assert type(X[n]) == String 
@@ -69,11 +70,8 @@ def test_rivers_with_station():
 
 def test_stations_by_river(): 
     """Check that the outputs of stations_by_river are of the correct type and value"""
-<<<<<<< HEAD
-     stations = build_station_list() 
-=======
     stations = build_station_list() 
->>>>>>> e0a0b7c97099a58f002452c9498379dfd6a38d3e
+
     # Obtain output 
     X = stations_by_river(stations)
 
@@ -86,35 +84,18 @@ def test_stations_by_river():
 ### TASK 1E: Check that the outputs are of the correct type and are ordered properly
 def test_rivers_by_station_number():
      """Check that the outputs of rivers_by_station_number are of the correct type"""
-<<<<<<< HEAD
+    
     stations = build_station_list() 
+    
     # Obtain output 
     X = rivers_by_station_number(stations, N)
+    
     # Check the type of the output
     assert type(X) == list 
+    
     # Check that the list is in alphabetical order 
     for n in range(0,len(X)-1):
         assert X[n+1][1] >= X[n][1]
+    
     # Check that the list is of length N or greater
     assert len(X) >= N
-=======
-     stations = build_station_list() 
-
-     # Obtain output 
-     N = random.randint(1,1000)
-     X = rivers_by_station_number(stations, N)
-
-     # Check the type of the output
-     assert type(X) == list 
-
-     #Check that the list is in alphabetical order 
-     for n in range(0,len(X)-1):
-         assert X[n+1][1] >= X[n][1]
-    
-     # Check that the list is of length N or greater
-     assert len(X) >= N
-     
-         
-    
-    
->>>>>>> e0a0b7c97099a58f002452c9498379dfd6a38d3e
