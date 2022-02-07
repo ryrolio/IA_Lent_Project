@@ -1,7 +1,7 @@
 """This module contains a collection of functions related to flood data."""
 
 from floodsystem.stationdata import build_station_list
-from .station import MonitoringStation 
+
 
 ### TASK 2B 
 stations = build_station_list() 

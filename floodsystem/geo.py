@@ -104,11 +104,8 @@ def stations_by_river(stations):
         
     return stations_by_river 
 
-<<<<<<< HEAD
-=======
 #### TASK 1E ####
 
->>>>>>> e0a0b7c97099a58f002452c9498379dfd6a38d3e
 def rivers_by_station_number(stations, N):
     """Gives a list of N rivers with the greatest number of monitoring stations"""
     list = []
