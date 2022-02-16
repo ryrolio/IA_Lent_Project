@@ -1,0 +1,1 @@
+### This file produces plots the best fit polynomial for different stations 
