@@ -8,9 +8,6 @@ x = matplotlib.dates.date2num(dates)
 def polyfit(dates, levels, p):
   """Given the water level time history, the function computes a least-squares fit of a polynomial of degree p to water level data, returning a tuple of the polynomial object and any shift of the time axis"""
   poly, d0 = polyfit(dates, levels, 3)
-  
-import numpy as np
-import matplotlib.pyplot as plt
 
 # Create set of 10 data points on interval (1000, 1002)
 x = np.linspace(10000, 10002, 10)
