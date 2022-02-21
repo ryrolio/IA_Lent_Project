@@ -28,3 +28,5 @@ def plot_water_levels(station, dates, levels):
 
     plt.show()
  
+### TASK 2F
+def plot_water_level_with_fit(station, dates, levels, p):
