@@ -2,8 +2,8 @@
 import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
+import datetime 
 
-x = matplotlib.dates.date2num(dates)
 
 def polyfit(dates, levels, p):
   """Given the water level time history, the function computes a least-squares fit of a polynomial of degree p to water level data, returning a tuple of the polynomial object and any shift of the time axis"""
@@ -19,7 +19,9 @@ def polyfit(dates, levels, p):
   
   poly = np.poly1d(coefficient)
   
-  return (poly, d0)
+  poly_tuple = (poly, d0)
+
+  return poly_tuple 
 
 
 
