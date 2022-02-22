@@ -1,8 +1,11 @@
 ### This file uses existing implmentations to decide which regions are at the
 ### highest risk of flooding.
 
+
 stations = build_station_list()
 update_water_levels(stations)
+
+dt = 5
 
 severe_risk = []
 high_risk = []
