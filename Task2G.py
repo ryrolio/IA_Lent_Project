@@ -26,25 +26,25 @@ for station in stations:
        continue 
                                         
    elif station.relative_water_level() > 1.5:
-      severe_risk.append((station.name, station.relative_water_level()))
+      severe_risk.append(station.name)
                                         
    elif station.relative_water_level() > 1 and rising_check(dates, levels, p) == True:
-      severe_risk.append((station.name, station.relative_water_level()))
+      severe_risk.append(station.name)
                                         
    elif station.relative_water_level() > 1:
-      high_risk.append((station.name, station.relative_water_level()))
+      high_risk.append(station.name)
                                         
    elif station.relative_water_level() > 0.5 and rising_check(dates, levels, p) == True:
-      high_risk.append((station.name, station.relative_water_level()))
+      high_risk.append(station.name)
                                         
    elif station.relative_water_level() > 0.5:
-      moderate_risk.append((station.name, station.relative_water_level()))
+      moderate_risk.append(station.name)
                                         
    elif station.relative_water_level() > 0 and rising_check(dates, levels, p) == True:
-      moderate_risk.append((station.name, station.relative_water_level()))
+      moderate_risk.append(station.name)
                                         
    elif station.relative_water_level() <= 0:
-      low_risk.append((station.name, station.relative_water_level()))
+      low_risk.append(station.name)
      
 
 
