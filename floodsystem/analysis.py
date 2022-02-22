@@ -21,3 +21,16 @@ def polyfit(dates, levels, p):
   poly = np.poly1d(coeff) 
 
   return poly, d0
+
+###TASK 2G
+
+def rising_check(dates, levels, p):
+  """Finds the derivative of the polynomial function found by polyfit, and if the gradient is greater than zero (ie if the water level is rising) returns true"""
+  poly, d0 = polyfit(dates, levels, p)
+  gradient = np.polyder(poly)
+  if gradient > 0:
+    return True
+  else:
+    return False
+
+  
