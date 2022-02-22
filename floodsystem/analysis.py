@@ -32,5 +32,3 @@ def rising_check(dates, levels, p):
     return True
   else:
     return False
-
-  

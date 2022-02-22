@@ -1,6 +1,10 @@
 ### This file uses existing implmentations to decide which regions are at the
 ### highest risk of flooding.
 
+from floodsystem.analysis import * 
+from floodsystem.datafetcher import * 
+from floodsystem.stationdata import * 
+
 stations = build_station_list()
 update_water_levels(stations)
 
@@ -9,7 +13,9 @@ high_risk = []
 moderate_risk = []
 low_risk = []
 
+
 for station in stations:
+
    if station.relative_water_level() > 1.5:
       severe_risk.append((station.name, station.relative_water_level()))
    elif station.relative_water_level() > 1 and rising_check(stations) == True:
