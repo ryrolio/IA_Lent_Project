@@ -17,7 +17,7 @@ stations = build_station_list()
 update_water_levels(stations)
 
 # Obtain list of stations that have the highest levels 
-highest_risk_stations = stations_highest_rel_level(stations,5)
+highest_risk_stations = stations_highest_rel_level(stations,6)
 
 # Take data from the past 10 days 
 dt = 10 
