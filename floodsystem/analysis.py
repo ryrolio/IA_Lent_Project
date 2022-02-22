@@ -14,11 +14,6 @@ def polyfit(dates, levels, p):
   # Obtain date shift 
   d0 = date_floats[0] 
 
-  # Obtain list of shifted dates 
-  shifted_dates = [] 
-  for i in range(1,len(date_floats)):
-    shifted_dates.append(date_floats[i-1] - d0) 
-
   # Find the coefficients of the best fit polynomial 
   coeff = np.polyfit(d0 - date_floats , levels, p)
 
