@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 import datetime
 import numpy as np 
 from floodsystem.analysis import *
+from floodsystem.station import * 
+from floodsystem.stationdata import * 
+from floodsystem.datafetcher import * 
 
 ### TASK 2E
 def plot_water_levels(station, dates, levels):
@@ -39,17 +42,21 @@ def plot_water_level_with_fit(station, dates, levels, p):
     # Obtain the polynomial and initial shift 
     function, offset = polyfit(dates, levels, p)
 
+    high_level = [station.typical_range[1]]*len(dates) 
+    low_level = [station.typical_range[0]]*len(dates) 
+
     # Show the graph of the polynomial fit 
-    plt.plot(offset - time, function(offset - time))
+    plt.plot(dates, function(offset - time), label = "Best Fit Curve")
 
     # Show the graph of the actual water levels 
-    plot_water_levels(station, dates, levels)
+    plt.plot(dates, high_level, label = "Typical High Level")
+    plt.plot(dates, low_level, label = "Typical Low Level")
 
     # Add labels/title/legend 
     plt.xlabel("Date")
     plt.ylabel("Water Level (m)")
     plt.xticks(rotation = 45)
-    plt.title(station.name + "Water Level")
+    plt.title(station.name + " Water Level")
     plt.tight_layout() 
 
     plt.show() 
