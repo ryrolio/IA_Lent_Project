@@ -1,12 +1,17 @@
 ### This file uses existing implmentations to decide which regions are at the
 ### highest risk of flooding.
 
+<<<<<<< HEAD
 from floodsystem.analysis import * 
 from floodsystem.datafetcher import * 
 from floodsystem.stationdata import * 
+=======
+>>>>>>> 036cfb1f70c9525e2854bf79eb55c5fd387c758c
 
 stations = build_station_list()
 update_water_levels(stations)
+
+dt = 5
 
 severe_risk = []
 high_risk = []
