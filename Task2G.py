@@ -16,9 +16,9 @@ severe_risk = []
 high_risk = []
 moderate_risk = []
 low_risk = []
-
-
+   
 for station in stations:
+   
    #fetch measure levels
    dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days = dt))
 
@@ -28,20 +28,25 @@ for station in stations:
    elif station.relative_water_level() > 1.5:
       severe_risk.append(station.name)
                                         
+<<<<<<< HEAD
    elif station.relative_water_level() > 1.0 and rising_check(dates, levels, p) == True:
       severe_risk.append(station.name)
+=======
+   #elif station.relative_water_level() > 1 and rising_check(dates, levels, p) == True:
+      #severe_risk.append(station.name)
+>>>>>>> 9bfe0995e1f5ff6715912dcd755dd1f265412d13
                                         
    elif station.relative_water_level() > 1.0:
       high_risk.append(station.name)
                                         
-   elif station.relative_water_level() > 0.5 and rising_check(dates, levels, p) == True:
-      high_risk.append(station.name)
+   #elif station.relative_water_level() > 0.5 and rising_check(dates, levels, p) == True:
+      #high_risk.append(station.name)
                                         
    elif station.relative_water_level() > 0.5:
       moderate_risk.append(station.name)
                                         
-   elif station.relative_water_level() > 0 and rising_check(dates, levels, p) == True:
-      moderate_risk.append(station.name)
+  #elif station.relative_water_level() > 0 and rising_check(dates, levels, p) == True:
+      #moderate_risk.append(station.name)
                                         
    elif station.relative_water_level() <= 0:
       low_risk.append(station.name)
