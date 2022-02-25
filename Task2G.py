@@ -1,56 +1,23 @@
-### This file uses existing implmentations to decide which regions are at the
-### highest risk of flooding.
+### This file prints the towns at which the flood risk is low/moderate/high/severe: 
 
+from floodsystem.stationdata import *
 from floodsystem.analysis import * 
-from floodsystem.datafetcher import * 
-from floodsystem.stationdata import * 
-import datetime
 
+# Obtain list of stations 
 stations = build_station_list()
 update_water_levels(stations)
 
-dt = 5
-p = 4
+# Create and show list of classified towns
+all_towns = risk_ranking_of_stations(stations) 
 
-severe_risk = []
-high_risk = []
-moderate_risk = []
-low_risk = []
-   
-for station in stations:
-   
-   #fetch measure levels
-   dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days = dt))
+severe_towns = all_towns[0] 
+print("Towns at SEVERE Risk: {} Town(s): {}".format(len(severe_towns), severe_towns))
 
-   if type(station.relative_water_level()) == type(None):
-       continue 
-                                        
-   elif station.relative_water_level() > 1.5:
-      severe_risk.append(station.name)
-                                        
-<<<<<<< HEAD
-   elif station.relative_water_level() > 1.0 and rising_check(dates, levels, p) == True:
-      severe_risk.append(station.name)
-=======
-   #elif station.relative_water_level() > 1 and rising_check(dates, levels, p) == True:
-      #severe_risk.append(station.name)
->>>>>>> 9bfe0995e1f5ff6715912dcd755dd1f265412d13
-                                        
-   elif station.relative_water_level() > 1.0:
-      high_risk.append(station.name)
-                                        
-   #elif station.relative_water_level() > 0.5 and rising_check(dates, levels, p) == True:
-      #high_risk.append(station.name)
-                                        
-   elif station.relative_water_level() > 0.5:
-      moderate_risk.append(station.name)
-                                        
-  #elif station.relative_water_level() > 0 and rising_check(dates, levels, p) == True:
-      #moderate_risk.append(station.name)
-                                        
-   elif station.relative_water_level() <= 0:
-      low_risk.append(station.name)
-     
+high_towns = all_towns[1]
+print("Towns at HIGH Risk: {} Town(s): {}".format(len(high_towns), high_towns)) 
 
+moderate_towns = all_towns[2]
+print("Towns at MODERATE Risk: {} Town(s): {}".format(len(moderate_towns), moderate_towns))
 
-  
+low_towns = all_towns[3]
+print("Towns at LOW Risk: {} Town(s): {}".format(len(low_towns), low_towns))

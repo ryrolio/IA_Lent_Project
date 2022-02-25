@@ -24,17 +24,37 @@ def polyfit(dates, levels, p):
 
 ###TASK 2G
 
-def rising_check(dates, levels, p):
-  """Finds the derivative of the polynomial function found by polyfit, and if the gradient is greater than zero 
-  (ie if the water level is rising) returns true"""
-  numdates = matplotlib.dates.date2num(dates) 
+def risk_ranking_of_stations(stations): 
+  """Task 2G, given a list of stations, this function sorts the stations into low/medium/high/severe"""
+  # Obtain a list of unique towns 
+  town_list0 = [] 
 
-  poly, d0 = polyfit(dates, levels, p)
-  gradient = np.polyder(poly)
+  for station in stations: 
+    town_list0.append(station.town) 
+    town_list = list(set(town_list0)) 
+  
+  # Initialise Ranking Lists 
+  low_risk_towns = [] 
+  moderate_risk_towns = [] 
+  high_risk_towns = [] 
+  severe_risk_towns = [] 
 
-  return gradient(numdates[-1]) 
+  # Sort based on flood risk 
+  for station in stations: 
+    if type(station.relative_water_level()) != type(None):
+      if float(station.relative_water_level()) >= 2:      # Classed as 'severe' 
+        severe_risk_towns.append(station.town) 
 
-  #if gradientf(numdates[-1]) > 0:
-    #return True
-  #else:
-    #return False
+      elif 1.5 <= float(station.relative_water_level()) < 2.0:    # Classed as 'high' 
+        high_risk_towns.append(station.town) 
+
+      elif 1.0 <= float(station.relative_water_level()) < 1.5:  # Classed as 'moderate' 
+        moderate_risk_towns.append(station.town) 
+      
+      elif float(station.relative_water_level()) < 1.0:     # Classed as 'low' 
+        low_risk_towns.append(station.town)
+  
+  # Return the final output 
+  classified_towns_by_risk = [severe_risk_towns, high_risk_towns, moderate_risk_towns, low_risk_towns]
+
+  return classified_towns_by_risk 
