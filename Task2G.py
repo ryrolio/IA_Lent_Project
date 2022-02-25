@@ -11,13 +11,13 @@ update_water_levels(stations)
 all_towns = risk_ranking_of_stations(stations) 
 
 severe_towns = all_towns[0] 
-print("Towns at SEVERE Risk: {} Town(s): {}".format(len(severe_towns), severe_towns))
+print("Towns at SEVERE Risk: {} Town(s): {} etc.".format(len(severe_towns), severe_towns[0:5]))
 
 high_towns = all_towns[1]
-print("Towns at HIGH Risk: {} Town(s): {}".format(len(high_towns), high_towns)) 
+print("Towns at HIGH Risk: {} Town(s): {} etc.".format(len(high_towns), high_towns[0:5])) 
 
 moderate_towns = all_towns[2]
-print("Towns at MODERATE Risk: {} Town(s): {}".format(len(moderate_towns), moderate_towns))
+print("Towns at MODERATE Risk: {} Town(s): {} etc.".format(len(moderate_towns), moderate_towns[0:5]))
 
 low_towns = all_towns[3]
-print("Towns at LOW Risk: {} Town(s): {}".format(len(low_towns), low_towns))
+print("Towns at LOW Risk: {} Town(s): {} etc.".format(len(low_towns), low_towns[0:5]))
