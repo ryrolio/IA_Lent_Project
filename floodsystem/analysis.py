@@ -25,13 +25,16 @@ def polyfit(dates, levels, p):
 ###TASK 2G
 
 def rising_check(dates, levels, p):
-  """Finds the derivative of the polynomial function found by polyfit, and if the gradient is greater than zero (ie if the water level is rising) returns true"""
-  numdates = matplotlib.dates.date2num(dates)
+  """Finds the derivative of the polynomial function found by polyfit, and if the gradient is greater than zero 
+  (ie if the water level is rising) returns true"""
+  numdates = matplotlib.dates.date2num(dates) 
 
   poly, d0 = polyfit(dates, levels, p)
   gradient = np.polyder(poly)
 
-  if gradient(numdates[-1]) > 0:
-    return True
-  else:
-    return False
+  return gradient(numdates[-1]) 
+
+  #if gradientf(numdates[-1]) > 0:
+    #return True
+  #else:
+    #return False
