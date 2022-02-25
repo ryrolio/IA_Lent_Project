@@ -2,7 +2,9 @@
 
 import matplotlib 
 import numpy as np 
-import datetime 
+import datetime
+
+from floodsystem.datafetcher import fetch, fetch_measure_levels 
 
 ### TASK 2F 
 def polyfit(dates, levels, p):
@@ -23,6 +25,27 @@ def polyfit(dates, levels, p):
   return poly, d0
 
 ###TASK 2G
+def rising_check(station, p): 
+  """Given a station, this function finds the best fit polynomial of degree p to calculate the gradient to determine if the 
+  water level is rising or falling"""
+  
+  # Obtain dates and levels information for a particular station 
+  dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days = 5))
+
+  # Converts dates to floats 
+  date_floats = matplotlib.dates.date2num(dates)
+
+  # Obtain the best fit polynomial 
+  poly, d0 = polyfit(dates, levels, p)
+
+  # Find the derivative of the polynomial function 
+  derivative = np.polyder(poly) 
+
+  # Find the gradient towards the end 
+  check = derivative(date_floats[-2])
+
+  return check 
+  
 
 def risk_ranking_of_stations(stations): 
   """Task 2G, given a list of stations, this function sorts the stations into low/medium/high/severe"""
@@ -41,6 +64,9 @@ def risk_ranking_of_stations(stations):
 
   # Sort based on flood risk 
   for station in stations: 
+    if station.name == "Letcombe Bassett":
+      continue 
+    
     if type(station.relative_water_level()) != type(None):
       if float(station.relative_water_level()) >= 2:      # Classed as 'severe' 
         severe_risk_towns.append(station.town) 

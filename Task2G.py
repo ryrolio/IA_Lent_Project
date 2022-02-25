@@ -7,8 +7,41 @@ from floodsystem.analysis import *
 stations = build_station_list()
 update_water_levels(stations)
 
-# Create and show list of classified towns
-all_towns = risk_ranking_of_stations(stations) 
+# Obtain a list of unique towns 
+town_list0 = [] 
+
+for station in stations: 
+   town_list0.append(station.town) 
+   town_list = list(set(town_list0)) 
+  
+# Initialise Ranking Lists 
+low_risk_towns = [] 
+moderate_risk_towns = [] 
+high_risk_towns = [] 
+severe_risk_towns = [] 
+
+# Sort based on flood risk 
+for station in stations: 
+   if station.name == "Letcombe Bassett":
+      continue 
+
+   if type(station.relative_water_level()) != type(None):
+      if float(station.relative_water_level()) >= 1.5 and float(rising_check(station, 4)) > 0:      
+         # Classed as 'severe': high relative level and rising levels 
+         severe_risk_towns.append(station.town) 
+      
+      elif float(station.relative_water_level()) >= 1.5 and float(rising_check(station, 4)) <= 0:    
+         # Classed as 'high': high relative levels but levels are not rising
+         high_risk_towns.append(station.town) 
+      
+      elif 0.75 <= float(station.relative_water_level()) < 1.5:  # Classed as 'moderate' 
+         moderate_risk_towns.append(station.town) 
+      
+      elif float(station.relative_water_level()) < 0.75:     # Classed as 'low' 
+         low_risk_towns.append(station.town)
+  
+# Return the final output 
+all_towns = [severe_risk_towns, high_risk_towns, moderate_risk_towns, low_risk_towns]
 
 severe_towns = all_towns[0] 
 print("Towns at SEVERE Risk: {} Town(s): {} etc.".format(len(severe_towns), severe_towns[0:5]))
