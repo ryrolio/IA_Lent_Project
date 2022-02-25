@@ -6,13 +6,6 @@ from floodsystem.analysis import *
 # Obtain list of stations 
 stations = build_station_list()
 update_water_levels(stations)
-
-# Obtain a list of unique towns 
-town_list0 = [] 
-
-for station in stations: 
-   town_list0.append(station.town) 
-   town_list = list(set(town_list0)) 
   
 # Initialise Ranking Lists 
 low_risk_towns = [] 
