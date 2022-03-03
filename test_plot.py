@@ -16,7 +16,7 @@ def test_plot_water_levels():
 
     # Obtain one stations from the list of stations: e.g. Cam 
     for station in stations:
-        if station.name == "Cam":
+        if station.name == "Bedford":
             station_Cambridge = station
 
     assert station_Cambridge 
@@ -39,7 +39,7 @@ def test_plot_water_levels_with_fit():
 
     # Obtain data from Cam
     for station in stations:
-        if station.name == "Cam": 
+        if station.name == "Bedford": 
             station_Cambridge = station 
     
     assert station_Cambridge 
