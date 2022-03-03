@@ -18,6 +18,9 @@ for station in stations:
    if station.name == "Letcombe Bassett":
       continue 
 
+   if station.name == "Whitchurch Main":
+      continue 
+
    if type(station.relative_water_level()) != type(None):
       if float(station.relative_water_level()) >= 1.5 and float(rising_check(station, 4)) > 0:      
          # Classed as 'severe': high relative level and rising levels 
