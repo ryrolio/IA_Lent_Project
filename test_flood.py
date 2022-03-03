@@ -12,7 +12,7 @@ def test_stations_level_over_threshold():
     update_water_levels(stations)
 
     # If the tolerance is set to a high number, there should be no output 
-    assert stations_level_over_threshold(stations,1e6) == [] 
+    assert stations_level_over_threshold(stations,1e8) == [] 
 
     # If the tolerance is zero, there is at least one output 
     assert stations_level_over_threshold(stations,0) != []

@@ -19,7 +19,7 @@ p = 4
 dt = 2
 
 # Identify the stations with the highest risk 
-stations_highest = stations_highest_rel_level(stations, 6) 
+stations_highest = stations_highest_rel_level(stations, 7) 
 
 # Plot the graphs for each highest risk station in the list 
 for entry in stations_highest: 

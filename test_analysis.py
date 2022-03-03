@@ -34,11 +34,11 @@ def test_rising_check():
 
     # Extract Cambridge Station 
     for station in stations:
-        if station.name == "Cam": 
-            station_Cambridge = station 
+        if station.name == "Bedford": 
+            station_Bedford = station 
     
-    assert station_Cambridge 
+    assert station_Bedford
 
-    risefall = rising_check(station_Cambridge, 4)
+    risefall = rising_check(station_Bedford, 4)
 
     assert type(risefall) == np.float64
