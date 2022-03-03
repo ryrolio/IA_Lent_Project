@@ -27,6 +27,9 @@ for entry in stations_highest:
         if station.name == "Letcombe Bassett":
             continue 
 
+        if station.name == "Whitchurch Main":
+            continue 
+
         if station == entry[0]:
             dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days=dt))
             plot_water_level_with_fit(station, dates, levels, p)

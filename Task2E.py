@@ -17,7 +17,7 @@ stations = build_station_list()
 update_water_levels(stations)
 
 # Obtain list of stations that have the highest levels 
-highest_risk_stations = stations_highest_rel_level(stations,6)
+highest_risk_stations = stations_highest_rel_level(stations,7)
 
 # Take data from the past 10 days 
 dt = 10 
@@ -27,6 +27,9 @@ for entry in highest_risk_stations:
     for station in stations:
         if station.name == "Letcombe Bassett":
             continue 
+
+        if station.name == "Whitchurch Main":
+            continue
 
         if station == entry[0]:
             dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
